@@ -3,7 +3,7 @@
 
 Este es un proyecto Django que sigue el patron MVT e incluye:
 
-- **Herencia de plantillas HTML**  
+- **Plantillas HTML**  
 - **Modelos de datos con tres clases:** `Autor`, `Categoria`, y `Post`  
 - **Formularios para agregar datos a la DB**  
 - **Formulario de búsqueda de posts**
