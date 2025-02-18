@@ -265,5 +265,5 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django
 
-# visual studio code
+# visual studio code 
 .vscode/
