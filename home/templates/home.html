@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DjangoWeb</title>
+    <link rel="stylesheet" href="../../static/home/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">Inicio</a>
+            <a href="{% url 'agregar_autor' %}">Agregar Autor</a>
+            <a href="{% url 'agregar_categoria' %}">Agregar Categoria</a>
+            <a href="{% url 'agregar_post' %}">Agregar Post</a>
+            <a href="{% url 'buscar_post' %}">Buscar Post</a>
+        </nav>
+        <h1>Bienvenid@!!</h1>
+    </header>
+</body>
+</html>
+
