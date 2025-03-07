@@ -1,28 +1,89 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>DjangoWeb</title>
-        <link rel="stylesheet" href="../../static/home/style.css">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a href="{% url 'home' %}">Inicio</a>
-                <a href="{% url 'agregar_autor' %}">Agregar Autor</a>
-                <a href="{% url 'agregar_categoria' %}">Agregar Categoria</a>
-                <a href="{% url 'agregar_post' %}">Agregar Post</a>
-                <a href="{% url 'buscar_post' %}">Buscar Post</a>
-            </nav>
-        </header>
-        <main>
-            {% block content %}
-                <h1>Formulario</h1>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Guardar</button>
-                </form>
-            {% endblock %}        
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    <div class="form-container">
+        <h2>{{ titulo }}</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar</button>
+        </form>
+        
+        <a href="{% url 'home' %}">Volver al inicio</a>
+    </div>
+</main>
+{% endblock %}
+
+<style>
+    .form-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 30px auto;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    .message {
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .message.success {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    a {
+        display: block;
+        margin-top: 15px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+</style>

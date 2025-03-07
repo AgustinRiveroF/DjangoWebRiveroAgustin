@@ -1,34 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DjangoWeb</title>
-    <link rel="stylesheet" href="../../static/home/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="{% url 'home' %}">Inicio</a>
-            <a href="{% url 'agregar_autor' %}">Agregar Autor</a>
-            <a href="{% url 'agregar_categoria' %}">Agregar Categoria</a>
-            <a href="{% url 'agregar_post' %}">Agregar Post</a>
-            <a href="{% url 'buscar_post' %}">Buscar Post</a>
-        </nav>
-    </header>
-    <main>
-        {% block content %}
-            <h1>Buscar Post</h1>
-            <form method="GET">
-                {{ form.as_p }}
-                <button type="submit">Buscar</button>
-            </form>
+{% extends 'base.html' %}
 
-            <h3>Resultados:</h3>
-            <ul>
-                {% for post in posts %}
-                    <li>{{ post.titulo }}</li>
-                {% endfor %}
-            </ul>
-        {% endblock %}    
-    </main>
-</body>
-</html>
+{% block title %}Buscar Posts{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Buscar Posts</h1>
+    
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+    
+    <h2>Resultados</h2>
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <a style="text-decoration: none;" href="{% url 'detalle_post' post.pk %}">{{ post.titulo }}</a>
+                    <p style="color: black;" >{{ post.subtitulo }}</p>
+                    <p style="color: black;" ><small>Publicado el {{ post.fecha_publicacion }}</small></p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron posts con ese título.</p>
+    {% endif %}
+</main>
+{% endblock %}
+

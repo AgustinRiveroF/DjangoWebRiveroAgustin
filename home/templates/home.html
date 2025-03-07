@@ -1,20 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>DjangoWeb</title>
-    <link rel="stylesheet" href="../../static/home/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="{% url 'home' %}">Inicio</a>
-            <a href="{% url 'agregar_autor' %}">Agregar Autor</a>
-            <a href="{% url 'agregar_categoria' %}">Agregar Categoria</a>
-            <a href="{% url 'agregar_post' %}">Agregar Post</a>
-            <a href="{% url 'buscar_post' %}">Buscar Post</a>
-        </nav>
-        <h1>Bienvenid@!!</h1>
-    </header>
-</body>
-</html>
+{% extends 'base.html' %}
 
+{% block title %}Inicio - Blogs{% endblock %}
+
+{% block parraf %}
+    <h1>Bienvenido a Bibliotech</h1>
+    <h2>Últimas publicaciones</h2>
+{% endblock %}
+
+{% block cartas %}
+<div class="grid-container">
+    {% for post in posts %}
+        {% if post.titulo != "ccc" and post.titulo != "aaa" %}
+            <div class="grid-item">
+                <a href="{% url 'detalle_post' post.pk %}">{{ post.titulo }}</a>
+                <p>{{ post.subtitulo }}</p>
+                <p><small>Publicado el {{ post.fecha_publicacion }}</small></p>
+
+                {% if post.imagen %}
+                    <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" width="200">
+                {% else %}
+                    <p>No hay imagen para este post.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% empty %}
+        <p>No hay publicaciones disponibles.</p>
+    {% endfor %}
+</div>
+{% endblock %}

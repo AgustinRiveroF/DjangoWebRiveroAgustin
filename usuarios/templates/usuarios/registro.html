@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img class="plantita" src="{% static 'home/plantita2png.png' %}" alt="planta-artificial">
+    <div class="container">
+        {% block content %}
+        <h1>Registro</h1>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+        <p class="p-form"> ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+        {% endblock %}
+    </div>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        margin: 0;
+    }
+    
+    .container {
+        text-align: center;
+        width: 100%%;
+    }
+    
+    h1 {
+        color: #333;
+    }
+    
+    .form-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: 0 auto;
+        width: 20rem;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        text-align: left;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    
+    input {
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    
+    .error-message {
+        color: red;
+        background: #ffdddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    
+    p {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3px;
+    }
+    
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .plantita {
+        position: absolute;
+        margin-top: 2%;
+        margin-right: 60%;
+    }
+    
+    .lapiz {
+        position: absolute;
+        margin-top: 15%;
+        margin-left: 25%;
+        width: 15%;
+    }
+    .p-form {
+        margin-top: 20px;
+    }
+    
+    span {
+        display: none;
+    }
+    
+</style>
+</html>

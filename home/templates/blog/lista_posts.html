@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="listaPosts">
+        <h1>Lista de Posts</h1>
+        {% for post in posts %}
+        <ul class="post-list">
+            <li style="color: black"><a style="color: black" href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a></li>
+            <li style="color: black">{{ post.subtitulo }}</li>
+            <li style="color: black"><small>Publicado el {{ post.fecha_publicacion }}</small></li>
+            {% if post.imagen %}
+            <li><img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" width="200"></li>
+            {% else %}
+            <li style="color: black">No hay imagen para este post.</li>
+            {% endif %}
+        </ul>
+        {% endfor %}
+    </div>
+{% endblock %}
