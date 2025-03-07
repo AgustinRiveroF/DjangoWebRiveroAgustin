@@ -13,3 +13,6 @@
 3. Migraciones: `python manage.py migrate`
 4. Crear superusuario: `python manage.py createsuperuser`
 5. Ejecutar servidor: `python manage.py runserver`
+
+## Video instructivo:
+- https://drive.google.com/file/d/1jKlidAzj7xCZX4Sm028laDIU3a5PquKj/view?usp=sharing
